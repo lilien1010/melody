@@ -75,9 +75,7 @@ func New() *Melody {
 		ReadBufferSize:  1024*32,
 		WriteBufferSize: 1024*32,
 		CheckOrigin:     func(r *http.Request) bool { return true },
-	}
-	
-	upgrader.SetReadLimit(24*1024)
+	} 
 	
 	hub := newHub()
 
@@ -170,7 +168,9 @@ func (m *Melody) HandleRequestWithKeys(w http.ResponseWriter, r *http.Request, k
 	}
 
 	conn, err := m.Upgrader.Upgrade(w, r, nil)
-
+	
+	conn.SetReadLimit(24*1024)
+	
 	if err != nil {
 		return err
 	}
