@@ -15,8 +15,8 @@ func newConfig() *Config {
 	return &Config{
 		WriteWait:         10 * time.Second,
 		PongWait:          60 * time.Second,
-		PingPeriod:        (60 * time.Second * 9) / 10,
-		MaxMessageSize:    512,
-		MessageBufferSize: 256,
+		PingPeriod:        (60 * time.Second * 3) / 10,
+		MaxMessageSize:    8*1024,
+		MessageBufferSize: 4*1024,
 	}
 }
