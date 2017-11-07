@@ -76,7 +76,9 @@ func New() *Melody {
 		WriteBufferSize: 1024*32,
 		CheckOrigin:     func(r *http.Request) bool { return true },
 	}
-
+	
+	upgrader.SetReadLimit(24*1024)
+	
 	hub := newHub()
 
 	go hub.run()
